@@ -6,13 +6,11 @@ from typing import Dict, List, Optional
 
 from game.engine import GuessNumberGame, GameRuleError, RoundResult, validate_code
 
-
 @dataclass
 class PlayerRoundView:
     round_no: int
     guess: str
     colors: List[str]
-
 
 @dataclass
 class Room:
@@ -96,7 +94,7 @@ class RoomManager:
         p1, p2 = room.player_order[0], room.player_order[1]
         results = room.game.resolve_round(p1, p2)
 
-        submissions: Dict[str, str] = getattr(room, "_last_round_guesses")
+        submissions: Dict[str, str] = getattr(room, "_last_round_guesses", {})
         round_no = len(room.history[p1]) + 1
         room.history[p1].append(
             PlayerRoundView(round_no=round_no, guess=submissions[p1], colors=results[p1].colors)
