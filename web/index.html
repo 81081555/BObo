@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>猜数字对战</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>猜数字对战（H5 + PWA）</h1>
+      <section class="card" id="setup">
+        <input id="name" placeholder="你的昵称" />
+        <input id="secret" placeholder="你的4位秘密数字" maxlength="4" />
+        <input id="nonce" placeholder="随机 nonce（可选）" />
+        <label><input type="checkbox" id="yellow" /> 开启黄色提示（数字对但位置错）</label>
+        <div class="actions">
+          <button id="createBtn">创建房间</button>
+          <button id="joinBtn">加入房间</button>
+        </div>
+        <input id="roomId" placeholder="房间号（加入时填写）" />
+        <p id="share"></p>
+      </section>
+
+      <section class="card" id="play" hidden>
+        <p id="roomInfo"></p>
+        <div class="actions">
+          <input id="guess" placeholder="输入4位猜测" maxlength="4" />
+          <button id="guessBtn">提交猜测</button>
+        </div>
+        <p id="status"></p>
+        <ul id="history"></ul>
+      </section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
